@@ -1,0 +1,23 @@
+{
+  "name": "acme-tdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "db.js",
+  "scripts": {
+    "test": "DATABASE_URL=postgres://localhost/acme_tdd_test mocha spec.js --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.18.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "supertest": "^4.0.2"
+  }
+}
