@@ -17,13 +17,26 @@ const validator = {
         }
     }
 }
+
+const hooksObj = {
+  hooks: {
+    async beforeSave(user) {
+      if (!user.departmentId) return
+
+      const users = await User.findAll({ where: { departmentId: user.departmentId } })
+      if (users.length >= 5) throw new Error("Can't have more than 5 users")
+    }
+  }
+}
+
 const Department = conn.define('department', validator)
 const User = conn.define('user',{
     ...validator,
     departmentId:{
         type: UUID
     }
-})
+}, hooksObj)
+
 Department.hasMany(User)
 User.belongsTo(Department)
 
